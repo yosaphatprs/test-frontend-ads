@@ -3,9 +3,8 @@ import ContentComponent from '@/components/home/ContentComponent';
 
 export default async function Home() {
 
-  // Consume API menggunakan fetch setiap 10 detik
   const res = await fetch('https://testcasefe2023.ignorelist.com/api/v1/data', {
-    next: { revalidate: 10 },
+    cache: "no-cache",
     headers: {
       "nim": "2141720031",
     }

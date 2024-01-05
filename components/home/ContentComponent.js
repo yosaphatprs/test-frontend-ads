@@ -31,10 +31,10 @@ const ContentComponent = (books) => {
     // Menghitung index awal yang ditampilkan
     const countIndexStart = () => {
         let index = 0;
-        if (books.data.length < rowsPerPage) {
+        if (books.data.length <= rowsPerPage) {
             index = 1;
         } else {
-            index = rowsPerPage + page;
+            index = rowsPerPage + page - 1;
         }
         return index;
     }
@@ -96,8 +96,8 @@ const ContentComponent = (books) => {
                                             <td className='pr-5 md:align-middle sm:align-text-top'>{book.author}</td>
                                             <td className='flex flex-col h-32'>
                                                 <div className='my-auto'>
-                                                    <Button route="edit" text="Ubah" type="success" styles="mb-2" />
-                                                    <Button route="delete" text="Hapus" type="danger" />
+                                                    <Button route={'edit/' + book.id} text="Ubah" type="success" styles="mb-2" />
+                                                    <Button route={'delete/' + book.id} text="Hapus" type="danger" />
                                                 </div>
                                             </td>
                                         </>
