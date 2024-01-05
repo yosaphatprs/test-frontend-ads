@@ -13,6 +13,7 @@ import Button from '@/components/Button';
 const ContentComponent = (books) => {
 
     books = books.books;
+    // console.log(books)
     let rowsPerPage = 5;
     let page = 1;
 
@@ -87,12 +88,12 @@ const ContentComponent = (books) => {
                         <tbody>
                             {
                                 books.data.length > 0 ? (
-                                    <tr className='text-sm border-t-2 border-b-2 h-32'>
+                                    books.data.map(book => <tr key={book.id} className='text-sm border-t-2 border-b-2 h-32'>
                                         <>
-                                            <td className='pr-5'>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                            <td className='pr-5'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam arcu nulla, malesuada vel lacus eu, placerat hendrerit lorem. Nunc tempor dolor eget dignissim maximus. Vestibulum lectus turpis, malesuada sit amet faucibus a, hendrerit sit amet neque. Praesent fringilla tincidunt lacinia. Nulla vel diam rutrum, varius magna sit amet, faucibus lacus. Maecenas neque sapien, euismod et mi a, dictum ullamcorper ante. </td>
-                                            <td className='pr-5 md:align-middle sm:align-text-top'>Rp. 50.000</td>
-                                            <td className='pr-5 md:align-middle sm:align-text-top'>ONIC Kiboy</td>
+                                            <td className='pr-5'>{book.title}</td>
+                                            <td className='pr-5'>{book.description}</td>
+                                            <td className='pr-5 md:align-middle sm:align-text-top'>{book.price}</td>
+                                            <td className='pr-5 md:align-middle sm:align-text-top'>{book.author}</td>
                                             <td className='flex flex-col h-32'>
                                                 <div className='my-auto'>
                                                     <Button route="edit" text="Ubah" type="success" styles="mb-2" />
@@ -100,7 +101,7 @@ const ContentComponent = (books) => {
                                                 </div>
                                             </td>
                                         </>
-                                    </tr>
+                                    </tr>)
                                 ) : (
                                     <tr className='border-t-2 border-b-2 h-20'>
                                         <td colSpan={5} className='text-center text-gray-700'>
